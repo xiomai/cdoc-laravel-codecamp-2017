@@ -1,0 +1,38 @@
+<section>
+  <h2 class="laravel">Blog Model and Migration</h2>
+  <pre><code class="hljs bash" data-trim>
+> php artisan list 
+# View list of available artisan commands 
+
+> php artisan make:model -h 
+# View options for the command
+
+> # php artisan make:model --migration --controller Blog 
+> php artisan make:model --mc Blog 
+
+# with that, Laravel created for us a Model, the Controller of that model
+# and the migration which we should modify first before runing the Migration
+  </code></pre>
+  <aside class="notes">
+    Model is singular to the table name
+  </aside>
+</section>
+<section>
+  <h2 class="laravel">Column Types</h2>
+  <pre><code class="hljs php" data-trim>
+Schema::create('blogs', function (Blueprint $table) {
+    $table->increments('id');
+    $table->integer('user_id');
+    $table->string('title');
+    $table->text('content');
+    $table->timestamps();
+});
+  </code></pre>
+  <p>
+    <small>
+      <a href="https://laravel.com/docs/5.4/migrations#columns">https://laravel.com/docs/5.4/migrations#columns</a>
+    </small>
+  </p>
+  <aside class="notes">
+  </aside>
+</section>

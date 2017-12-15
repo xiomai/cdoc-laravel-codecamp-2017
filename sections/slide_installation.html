@@ -1,0 +1,20 @@
+<section>
+  <h2 class="laravel">Install & Run Laravel</h2>
+  <pre><code class="hljs" data-trim>
+> composer global require "laravel/installer"
+> # go to your projects directory or in our case xampp/htdocs
+> laravel new blog
+  </code></pre>
+  <p>or...</p>
+  <pre><code class="hljs" data-trim>
+> composer create-project --prefer-dist laravel/laravel Laravel54Blog "5.4.*"
+> cd Laravel54Blog
+> code . # launch VS Code on the current directory
+> # Open Integrated Terminal on VS Code
+> php artisan serve
+  </code></pre>
+  <aside class="notes">
+    We will be using the second option to install a specific laravel version.
+    <br/> It's convenient that the command prompt is inside the editor, launch via shortcut ctrl - ~
+  </aside>
+</section>

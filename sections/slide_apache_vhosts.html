@@ -1,0 +1,52 @@
+<section>
+  <h2 class="laravel">Virtual Hosts <em>(Apache)</em></h2>
+  <section data-markdown>
+    <script type="text/template">
+      ```
+      ## C:\xampp\apache\conf\extra\httpd-vhosts.conf
+
+      <VirtualHost *:80>
+        DocumentRoot "c:/xampp/htdocs/Laravel54Blog/public"
+        ServerName mylaravelblog.local
+      </VirtualHost>
+      ```
+    </script>
+  </section>
+  <p>Run notepad.exe as administrator</p>
+    <pre><code class="hljs" data-trim>
+# open C:\Windows\System32\drivers\etc\hosts "All files (*.*)" to see the file
+# add this at the end on file
+
+127.0.0.1 localhost
+127.0.0.1 mylaravelblog.local
+    </code></pre>
+    <p>Then stop and start Apache on your Xampp Control Panel</p>
+  <aside class="notes">
+    Chrome 63 and .dev extension forcing HTTPS so avoid using.
+    <br/> Simulate a web address like `mylaravelblog.local/` 
+    <br/>
+     If you have a custom folder where your code/projects resides, add the directory config at the top of the vhosts file.
+  </aside>
+</section>
+<section>
+  <h2 class="laravel">Virtual Hosts <em>(Apache)</em></h2>
+  <p>Custom folder for your codes/projects</p>
+  <section data-markdown>
+    <script type="text/template">
+        ```
+        ## C:\xampp\apache\conf\extra\httpd-vhosts.conf
+
+        <Directory "c:/projects">
+          AllowOverride all
+          Require all granted
+        </Directory>
+  
+        <VirtualHost *:80>
+          DocumentRoot "c:/projects/laravel/Laravel54Blog/public"
+          ServerName mylaravelblog.local
+        </VirtualHost>
+        ```
+      </script>
+  </section>
+  <p><small>**Apache 2.4</small></p>
+</section>

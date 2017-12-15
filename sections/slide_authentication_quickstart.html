@@ -1,0 +1,55 @@
+<section>
+  <h2 class="laravel">Authentication Quickstart</h2>
+  <pre class="fragment"><code class="hljs php" data-trim>
+> php artisan make:auth
+> # run the migration for the users table by
+> php artisan migrate
+  </code></pre>
+  <aside class="notes">
+    Front end screenshots or show a live sample.
+  </aside>
+</section>
+<section>
+  <h2 class="laravel">Index Lengths & MySQL / MariaDB</h2>
+  <a href="https://laravel.com/docs/5.4/migrations#indexes">https://laravel.com/docs/5.4/migrations#indexes</a>
+  <pre><code class="hljs php" data-trim>
+> # If you are running a version of MySQL older than the 5.7.7 release
+> # or MariaDB older than the 10.2.2 release
+
+In Connection.php line 647:
+  SQLSTATE[42000]: Syntax error or access violation: 1071 Specified key was too long; max key length is 767 bytes (SQL: alter table `users` add
+   unique `users_email_unique`(`email`))
+
+In Connection.php line 449:
+  SQLSTATE[42000]: Syntax error or access violation: 1071 Specified key was too long; max key length is 767 bytes
+  </code></pre>
+  <aside class="notes">
+  </aside>
+</section>
+<section>
+  <h2 class="laravel">Fix</h2>
+  <p class="link-color">app\Providers\AppServiceProvider.php</p>
+  <pre><code class="hljs php" data-trim>
+use Illuminate\Support\Facades\Schema;
+
+/**
+ * Bootstrap any application services.
+ *
+ * @return void
+ */
+public function boot()
+{
+    Schema::defaultStringLength(191);
+}
+  </code></pre>
+  <aside class="notes">
+    Drop the database tables and re-run php artisan migrate
+    <br/>
+    php artisan migrate:status
+  </aside>
+</section>
+<section>
+  <h2 class="laravel">Manually Authenticating Users</h2>
+  <p>You are not required to use the authentication controllers included with Laravel.</p>
+  <a href="https://laravel.com/docs/5.4/authentication#authenticating-users">https://laravel.com/docs/5.4/authentication#authenticating-users</a>
+</section>

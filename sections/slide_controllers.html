@@ -1,0 +1,57 @@
+<section>
+  <h2 class="laravel">Controllers</h2>
+  <small><a href="https://laravel.com/docs/5.4/controllers">https://laravel.com/docs/5.4/controllers</a></small>
+  <pre><code class="hljs php" data-trim>
+> php artisan make:controller PagesController
+# a new file will be created `app\Http\Controllers\PagesController.php`
+  </code></pre>
+  <p class="link-color"><small>routes/web.php</small></p>
+  <pre><code class="hljs php" data-trim>
+Route::get('/', 'PagesController@index');
+Route::get('/about', 'PagesController@about');
+Route::get('/contact', 'PagesController@contact');
+  </code></pre>
+  <aside class="notes">
+    Introduce a liitle bit of `php artisan list`
+  </aside>
+</section>
+<section>
+  <p class="link-color"><small>app\Http\Controllers\PagesController.php</small></p>
+  <pre><code class="hljs php" data-trim>
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+class PagesController extends Controller
+{
+    
+    public function index()
+    {
+        return view('pages.index')->with(array('pageName' => 'Home'));
+    }
+    
+    public function about()
+    {
+        $data = [
+            'pageName' => 'About',
+            'otherData' => 100,
+            'code_languages' => [
+                'PHP', 'HTML', 'CSS', 'JavaScript'
+            ]
+        ];
+
+        return view('pages.about', compact('data'));
+    }
+
+    public function contact()
+    {
+        $pageName = 'Contact';
+
+        return view('pages.contact', ['pageName' => $pageName]);
+    }
+
+}
+
+  </code></pre>
+</section>

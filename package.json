@@ -1,9 +1,8 @@
 {
-  "name": "reveal.js",
-  "version": "3.6.0",
-  "description": "The HTML Presentation Framework",
-  "homepage": "http://revealjs.com",
-  "subdomain": "revealjs",
+  "name": "cdoc-laravel-codecamp-2017",
+  "version": "1",
+  "description": "The HTML Presentation Framework for Cagayan de Oro Laravel Codecamp 2017 using reveal.js",
+  "homepage": "http://alisongaleon.com",
   "main": "js/reveal.js",
   "scripts": {
     "test": "grunt test",
@@ -11,9 +10,9 @@
     "build": "grunt"
   },
   "author": {
-    "name": "Hakim El Hattab",
-    "email": "hakim.elhattab@gmail.com",
-    "web": "http://hakim.se"
+    "name": "Alison Galeon",
+    "email": "me@alisongaleon.com",
+    "web": "http://alisongaleon.com"
   },
   "repository": {
     "type": "git",

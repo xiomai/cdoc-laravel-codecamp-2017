@@ -1,0 +1,104 @@
+<section>
+  <h2 class="laravel">Routing</h2>
+  <p class="link-color"><small>routes/web.php</small></p>
+  <pre><code class="hljs php" data-trim>
+
+Route::get($uri, $callback);
+Route::post($uri, $callback);
+Route::put($uri, $callback);
+Route::patch($uri, $callback);
+Route::delete($uri, $callback);
+Route::options($uri, $callback);
+
+Route::get('/', function () {
+    return '<h1> INDEX PAGE </h1>';
+});
+
+Route::get('/about', function () {
+    return '<h1> ABOUT PAGE </h1>';
+});
+
+Route::get('/contact', function () {
+    return '<h1> CONTACT PAGE </h1>';
+});
+
+//Route::get('/{name}/{place}', function ($name, $place) {
+//    return '<h1>Hello ' .$name.' from '. $place . '</h1>';
+//    // return view('welcome');
+//});
+
+  </code></pre>
+  <aside class="notes">
+    php artisan route:list
+  </aside>
+</section>
+<section>
+  <h2 class="laravel">Views</h2>
+  <p class="link-color"><small>routes/web.php</small></p>
+  <pre><code class="hljs php" data-trim>
+
+Route::get('/', function () {
+
+    return view('pages.index');
+});
+
+Route::get('/about', function () {
+
+    return view('pages.about');
+});
+
+Route::get('/contact', function () {
+
+    return view('pages.contact');
+});
+
+  </code></pre>
+  <aside class="notes">
+    php artisan route:list
+    <br />Create views from the bootstrap basic theme https://getbootstrap.com/docs/3.3/getting-started/#examples
+  </aside>
+</section>
+<section>
+    <h2 class="laravel">Template Inheritance</h2>
+    <p>Defining and Extending Laravel Blade Layout</p>
+    <p><small><a href="https://laravel.com/docs/5.4/blade#template-inheritance">https://laravel.com/docs/5.4/blade#template-inheritance</a></small></p>
+
+</section>
+
+<section>
+  <h2 class="laravel">Passing Data to Routes</h2>
+  <p class="link-color"><small>routes/web.php</small></p>
+  <pre><code class="hljs php" data-trim contenteditable>
+// using the `with` method
+Route::get('/', function () {
+
+    return view('pages.index')->with(array('pageName' => 'Home'));
+});
+
+// using PHP's `compact` helper function
+Route::get('/about', function () {
+    $data = [
+        'pageName' => 'About',
+        'otherData' => 100,
+        'code_languages' => [
+            'PHP', 'HTML', 'CSS', 'JavaScript'
+        ]
+    ];
+
+    return view('pages.about', compact('data'));
+});
+
+// passing an array as second parameter
+Route::get('/contact', function () {
+    $pageName = 'Contact';
+
+    return view('pages.contact', ['pageName' => $pageName]);
+});
+
+  </code></pre>
+  <aside class="notes">
+    compact or ->with method
+    <br/>
+    So far we've discussed about Routes, Views; Passing data to View, Blade Template; Components and Control Structures.
+  </aside>
+</section>
